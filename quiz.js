@@ -84,10 +84,11 @@ startGame = () => {
     if (classToApply === "correct") {
       incrementScore(CORRECT_BONUS);
     }
-   
 
-
-      getNewQuestion();
+    selectedChoice.parentElement.classList.add(classToApply);
+    setTimeout(() => {
+        selectedChoice.parentElement.classList.remove(classToApply);
+        getNewQuestion();
+      }, 1000);
     });
   });
-  
