@@ -37,4 +37,33 @@ let questions = [
   
 
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const MAX_QUESTIONS = 3; 
+
+startGame = () => {
+    questionCounter = 0;
+    score = 0;
+    availableQuesions = [...questions];
+    console.log(availableQuesions);
+    getNewQuestion();
+  };
+
+  getNewQuestion = () => {
+    if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+      //go to the end page
+      return window.location.assign("/end.html");
+    }
+    questionCounter++;
+    const questionIndex = Math.floor(Math.random() * availableQuesions.length);
+    currentQuestion = availableQuesions[questionIndex];
+    question.innerText = currentQuestion.question;
+  
+    choices.forEach(choice => {
+      const number = choice.dataset["number"];
+      choice.innerText = currentQuestion["choice" + number];
+    });
+  
+    availableQuesions.splice(questionIndex, 1);
+    console.log(availableQuesions);
+    acceptingAnswers = true;
+  };
+  
