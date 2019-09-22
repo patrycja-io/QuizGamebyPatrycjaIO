@@ -46,16 +46,17 @@ startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuesions = [...questions];
-    console.log(availableQuesions);
     getNewQuestion();
   };
 
   getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-      //go to the end page
+     
       return window.location.assign("/end.html");
     }
     questionCounter++;
+    questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+    
     const questionIndex = Math.floor(Math.random() * availableQuesions.length);
     currentQuestion = availableQuesions[questionIndex];
     question.innerText = currentQuestion.question;
@@ -66,7 +67,6 @@ startGame = () => {
     });
   
     availableQuesions.splice(questionIndex, 1);
-    console.log(availableQuesions);
     acceptingAnswers = true;
   };
   
@@ -77,7 +77,16 @@ startGame = () => {
       acceptingAnswers = false;
       const selectedChoice = e.target;
       const selectedAnswer = selectedChoice.dataset["number"];
-      console.log(selectedAnswer);
+
+ const classToApply =
+      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+
+    if (classToApply === "correct") {
+      incrementScore(CORRECT_BONUS);
+    }
+   
+
+
       getNewQuestion();
     });
   });
