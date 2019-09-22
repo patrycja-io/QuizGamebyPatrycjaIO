@@ -92,3 +92,10 @@ startGame = () => {
       }, 1000);
     });
   });
+
+  incrementScore = num => {
+    score += num;
+    scoreText.innerText = score;
+  };
+  
+  startGame();
