@@ -105,5 +105,3 @@ startGame = () => {
     score += num;
     scoreText.innerText = score;
   };
-  
-  startGame();
