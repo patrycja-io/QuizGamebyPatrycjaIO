@@ -8,17 +8,14 @@ const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 const MAX_HIGH_SCORES = 5;
 
-
-
 finalScore.innerText = mostRecentScore;
-
 username.addEventListener("keyup", () => {
   saveScoreBtn.disabled = !username.value;
 });
+
 saveHighScore = e => {
-    console.log("clicked the save button!");
-    e.preventDefault();
-  };
+  console.log("clicked the save button!");
+  e.preventDefault();
 
   const score = {
     score: Math.floor(Math.random() * 100),
