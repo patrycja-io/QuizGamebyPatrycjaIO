@@ -10,7 +10,7 @@ let questionCounter = 0;
 let availableQuesions = [];
 let questions = [];
 fetch(
-  "https://opentdb.com/api.php?amount=10&category=12&difficulty=hard&type=multiple"
+  "https://the-trivia-api.com/api/questions"
 )
   .then(res => {
     return res.json();
